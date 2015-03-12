@@ -1,5 +1,6 @@
 package in.srain.cube.views.ptr.demo.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +16,15 @@ import in.srain.cube.views.ptr.demo.ui.classic.*;
 import in.srain.cube.views.ptr.demo.ui.storehouse.StoreHouseUsingPointList;
 import in.srain.cube.views.ptr.demo.ui.storehouse.StoreHouseUsingString;
 import in.srain.cube.views.ptr.demo.ui.storehouse.StoreHouseUsingStringArray;
+import in.srain.cube.views.ptr.demo.ui.viewpager.ViewPagerActivity;
 import in.srain.cube.views.ptr.header.StoreHouseHeader;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends BlockMenuFragment {
+public class PtrDemoHomeFragment extends BlockMenuFragment {
 
     @Override
-    protected void addItemInfo(ArrayList<BlockMenuFragment.ItemInfo> itemInfos) {
+    protected void addItemInfo(ArrayList<BlockMenuFragment.MenuItemInfo> itemInfos) {
 
         // GridView
         itemInfos.add(newItemInfo(R.string.ptr_demo_block_grid_view, R.color.cube_mints_4d90fe, new OnClickListener() {
@@ -60,7 +62,13 @@ public class HomeFragment extends BlockMenuFragment {
                 getContext().pushFragmentToBackStack(WithWebView.class, null);
             }
         }));
-        itemInfos.add(null);
+        itemInfos.add(newItemInfo(R.string.ptr_demo_block_with_list_view_and_empty_view, R.color.cube_mints_4d90fe, new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                getContext().pushFragmentToBackStack(WithListViewAndEmptyView.class, null);
+            }
+        }));
 
         itemInfos.add(newItemInfo(R.string.ptr_demo_block_keep_header, R.color.cube_mints_4d90fe, new OnClickListener() {
 
@@ -136,10 +144,20 @@ public class HomeFragment extends BlockMenuFragment {
                 getContext().pushFragmentToBackStack(WithLongPressFragment.class, null);
             }
         }));
-        itemInfos.add(newItemInfo(R.string.ptr_demo_placeholder, R.color.cube_mints_4d90fe, new OnClickListener() {
+        itemInfos.add(newItemInfo(R.string.ptr_demo_block_with_view_pager, R.color.cube_mints_4d90fe, new OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getContext(), ViewPagerActivity.class);
+                startActivity(intent);
+            }
+        }));
+        itemInfos.add(newItemInfo(R.string.ptr_demo_rentals_style, R.color.cube_mints_4d90fe, new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                getContext().pushFragmentToBackStack(RentalsStyleFragment.class, null);
             }
         }));
         itemInfos.add(newItemInfo(R.string.ptr_demo_placeholder, R.color.cube_mints_4d90fe, new OnClickListener() {
@@ -188,7 +206,8 @@ public class HomeFragment extends BlockMenuFragment {
     }
 
     @Override
-    protected void setupViews() {
+    protected void setupViews(View view) {
+        super.setupViews(view);
         setHeaderTitle(R.string.ptr_demo_block_for_home);
     }
 }

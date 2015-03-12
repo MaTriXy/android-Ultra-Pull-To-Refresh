@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/liaohuqiu/android-Ultra-Pull-To-Refresh.svg?branch=master)](https://travis-ci.org/liaohuqiu/android-Ultra-Pull-To-Refresh)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Ultra%20Pull%20To%20Refresh-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1180)
 
-# [中文版文档](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh/blob/master/README-cn.md)
+#### [中文版文档](https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh/blob/master/README-cn.md)
 
 # Ultra Pull To Refresh
 
@@ -13,7 +13,7 @@ It's well designed, you can customize the UI effect you want as easy as adding a
 
 Support `API LEVEL >= 8`, all snapshots are taken from Genymotion, 2.3.7.
 
-[Download APK](https://raw.githubusercontent.com/liaohuqiu/android-Ultra-Pull-To-Refresh/master/ptr-demo/target/ultra-ptr-demo.apk)
+[Download APK](https://raw.githubusercontent.com/liaohuqiu/android-Ultra-Pull-To-Refresh/master/ptr-demo.apk)
 
 * StoreHouse Style first! Thanks to [CBStoreHouseRefreshControl](https://github.com/coolbeet/CBStoreHouseRefreshControl).
     <div class='row'>
@@ -54,30 +54,56 @@ Support `API LEVEL >= 8`, all snapshots are taken from Genymotion, 2.3.7.
 
 This project has been pushed to Maven Central, both in `aar` and `apklib`.
 
-pom.xml
+The latest version: `1.0.8.3-SNAPSHOT`, has been published to: https://oss.sonatype.org/content/repositories/snapshots, in gradle:
 
-```xml
-<dependency>
-    <groupId>in.srain.cube</groupId>
-    <artifactId>ultra-ptr</artifactId>
-    <type>apklib</type>
-    <version>1.0.5</version>
-</dependency>
 ```
-or 
+maven {
+    url 'https://oss.sonatype.org/content/repositories/snapshots'
+}
+```
+
+The stable version: `1.0.7`, https://oss.sonatype.org/content/repositories/releases, in gradle:
+
+```
+mavenCentral()
+```
+
+pom.xml, latest version:
 
 ```xml
 <dependency>
     <groupId>in.srain.cube</groupId>
     <artifactId>ultra-ptr</artifactId>
     <type>aar</type>
-    <version>1.0.5</version>
+    <!-- or apklib format, if you want -->
+    <!-- <type>apklib</type> -->
+    <version>1.0.8.3-SNAPSHOT</version>
 </dependency>
 ```
 
-gradle
+pom.xml, stable version:
+
+```xml
+<dependency>
+    <groupId>in.srain.cube</groupId>
+    <artifactId>ultra-ptr</artifactId>
+    <type>aar</type>
+    <!-- or apklib format, if you want -->
+    <!-- <type>apklib</type> -->
+    <version>1.0.7</version>
+</dependency>
 ```
-compile 'in.srain.cube:ultra-ptr:1.0.5@aar'
+
+gradle, latest version:
+
+```
+compile 'in.srain.cube:ultra-ptr:1.0.8.3-SNAPSHOT@aar'
+```
+
+gradle, stable version:
+
+```
+compile 'in.srain.cube:ultra-ptr:1.0.7@aar'
 ```
 
 #### Config
@@ -154,6 +180,12 @@ mPtrFrame.setPullToRefresh(false);
 // default is true
 mPtrFrame.setKeepHeaderWhenRefresh(true);
 ```
+
+### Other Config
+
+*  `setPinContent`. Pin the content, only the `HeaderView` will be moved. 
+
+    This's the the performance of material style in support package v19.
 
 ## StoreHouse Style
 
@@ -280,6 +312,11 @@ public interface PtrUIHandler {
 }
 ```
 
+# Q & A
+
+*  work with ViewPager: `disableWhenHorizontalMove()`
+
+*  work with LongPressed, `setInterceptEventWhileWorking()`
 
 # License
 
@@ -293,4 +330,4 @@ Please fell free to contact me if there is any problem when using the library.
 * twitter: https://twitter.com/liaohuqiu
 * weibo: http://weibo.com/liaohuqiu
 * blog: http://www.liaohuqiu.net
-* QQ tribe: 271918140
+* QQ tribe: 417208555, this the rule for this tribe, please read it before you request to join: https://github.com/liaohuqiu/qq-tribe-rule
